@@ -1,0 +1,19 @@
+https://alteredqualia.com/xg/examples/jupiter.html
+https://alteredqualia.com/visualization/gaussian.html
+https://alteredqualia.com/cubeout/
+https://media.tojicode.com/q3bsp/
+http://www.chaostoperfection.com/
+
+CSS
+SVG
+
+WebGL
+Webassembly - https://medium.com/javascript-scene/what-is-webassembly-the-dawn-of-a-new-era-61256ec5a8f6
+
+Websocket 
+WebWorker
+
+frameworks
+reactjs
+angularjs
+node.js

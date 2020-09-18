@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="Pi.js"></script>
+    <title>Calculation of PI</title>
+</head>
+
+<body class="">
+<input type="range" min = "1" max = "10" value = "1">
+<div id="Pi">
+
+</div>
+<script>
+window.onload = function(){
+var input = document.getElementsByTagName("input")[0];
+
+
+piResult = document.getElementById("Pi");
+
+input.addEventListener('input', function(){
+    var n = this.value;
+    console.log(n);
+    console.log(pi(n));
+    piResult.innerHTML += ""+pi(n)[2]+"<br>";   
+});
+}
+
+
+</script>
+</body>
+</html>

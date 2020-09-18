@@ -1,0 +1,110 @@
+<!doctype>
+<html>
+    <head>
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+.column {
+ float: left;
+  width: 50%;
+  padding: 10px;
+  height: 100vh;
+  border:1px solid black;
+    }
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#iframeResult, #textareaCode{
+font-size:20px;
+    position: relative;
+	top:0px;
+    height: 100%;
+    width: 100%; 
+}
+</style>
+
+    <script type="text/javascript">
+	
+function run(){
+        var div= document.createElement("div");
+        codeText=document.getElementById("textareaCode").innerHTML;
+        //codeText=codeText.replace(/&lt;/gi,"<");
+        //codeText=codeText.replace(/&gt;/gi,">");
+
+        //div.innerHTML=codeText
+        //document.getElementById("codeFrame").appendChild(div);
+    } ;
+ function default_html(){
+
+var default_text=document.getElementById("textareaCode").value;
+document.getElementById("textareaCode").innerHTML="";
+document.getElementById("textareaCode").innerHTML=default_text;
+
+ }
+    function clearFrame(){
+        document.getElementById("iframewrapper").innerHTML="";
+		document.getElementById("textareaCode").innerHTML="";
+    };
+	
+	function submitTryit(n) {
+
+
+  var text = document.getElementById("textareaCode").value;
+  var ifr = document.createElement("iframe");
+  ifr.setAttribute("frameborder", "0");
+  ifr.setAttribute("id", "iframeResult");
+  ifr.setAttribute("name", "iframeResult");  
+  document.getElementById("iframewrapper").innerHTML = "";
+  document.getElementById("iframewrapper").appendChild(ifr);
+ 
+    var ifrw = (ifr.contentWindow) ? ifr.contentWindow : (ifr.contentDocument.document) ? ifr.contentDocument.document : ifr.contentDocument;
+    ifrw.document.open();
+    ifrw.document.write(text);  
+    ifrw.document.close();
+    //23.02.2016: contentEditable is set to true, to fix text-selection (bug) in firefox.
+    //(and back to false to prevent the content from being editable)
+    //(To reproduce the error: Select text in the result window with, and without, the contentEditable statements below.)  
+    if (ifrw.document.body && !ifrw.document.body.isContentEditable) {
+      ifrw.document.body.contentEditable = true;
+      ifrw.document.body.contentEditable = false;
+    }
+  
+}
+    </script>
+    </head>
+    <body>
+        <button onclick="submitTryit(1)">Run</button>
+        <button onclick="clearFrame()">Clear</button>
+		<button onclick="default_html()">Default</button>
+        <div class="row">
+		<a href="javascript: void(0)" id="dragbar" style="width: 5px; top: 138px; left: 514px; height: 830px; cursor: col-resize;"></a>
+		<div id="textwrapper" class="column" >
+           <textarea class="html" autocomplete="off" id="textareaCode" wrap="logical" spellcheck="false" style="display: block;" style="position:absolute;top:0px;width:100%;height:100vh;">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;body&gt;
+&lt;div class="html" &gt;
+
+&lt;h1&gt;My first SVG&lt;/h1&gt;
+
+&lt;svg width="100" height="100"&gt;
+   &lt;circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /&gt;
+   Sorry, your browser does not support inline SVG.
+&lt;/svg&gt; 
+ &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</textarea>
+			</div>
+            <div id="iframewrapper" class="column">
+			</div>
+        <div>
+		<script type="text/javascript" src="extras/highlight/highlight.pack.js"></script>
+    </body>
+</html>
