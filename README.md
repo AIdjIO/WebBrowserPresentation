@@ -1,2 +1,2 @@
-# WebBrowserPresentation
-presentation about web browser with impress.js
+# Web Browser Presentation
+Presentation about web browser with impress.js
